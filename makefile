@@ -4,7 +4,6 @@ JC = javac
 	$(JC) $*.java
 
 CLASSES = \
-	FooClass.java\
 	Main.java
 
 default: classes
