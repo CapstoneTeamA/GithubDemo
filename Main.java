@@ -1,6 +1,7 @@
 public class Main{
 	public static void main(String args[])
 	{
-		System.out.println("running demo");
+		//We so badly need a team name!!!
+		System.out.println("Capstone Team A demo.");
 	}
 }
