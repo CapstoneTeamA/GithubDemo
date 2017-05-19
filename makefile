@@ -4,6 +4,7 @@ JC = javac
 	$(JC) $*.java
 
 CLASSES = \
+	Fact.java\
 	Main.java
 
 default: classes
