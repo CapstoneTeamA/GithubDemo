@@ -1,13 +1,9 @@
 class StrAndIntCat {
 
-public int StrAndIntCat(String inString, int inInt){
+	public String StrAndIntCat(String inString, int inInt){
 
-String output = inString + inInt;
+		String output = inString + inInt;
 
-return output;
-
-}
-
-
-
+	return output;
+	}
 }
