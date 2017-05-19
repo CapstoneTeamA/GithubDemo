@@ -6,7 +6,7 @@ JC = javac
 CLASSES = \
 	PrintString.java\
 	Main.java\
-    Math.java
+	Math.java
 
 default: classes
 
