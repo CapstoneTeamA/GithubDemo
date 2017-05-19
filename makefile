@@ -4,6 +4,7 @@ JC = javac
 	$(JC) $*.java
 
 CLASSES = \
+	PrintString.java\
 	Main.java
 
 default: classes
