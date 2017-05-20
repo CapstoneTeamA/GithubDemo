@@ -4,6 +4,7 @@ JC = javac
 	$(JC) $*.java
 
 CLASSES = \
+	Stats.java\
 	PrintString.java\
 	Main.java
 
