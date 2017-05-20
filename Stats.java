@@ -1,28 +1,34 @@
 import java.math.BigInteger;
 import java.lang.IllegalArgumentException;
 public class Stats{
-	public static int pow(int base, int exp) throws IllegalArgumentException
+	//some constats that may be used in the future
+	private static final float pi = 3.14159f;
+	private static final float e = 2.71828f;
+	private static final float rt2 = 1.41421f;
+
+	public static final float getPi()
 	{
-		int power = 1;
-		if (exp < 0)
-		{
-			throw new IllegalArgumentException("Cant take negative exponents.");
-		}
-		for (int i = 0; i < exp; i++)
-		{
-			power *= base;
-		}
-		return power;
+		return Stats.pi;
+	}
+	public static final float getE()
+	{
+		return Stats.e;
+	}
+	public static final float getRt2()
+	{
+		return Stats.rt2;
 	}
 
+	//multiply n by n-1 by n-2 by ... by 2
 	public static BigInteger factorial(int n) throws IllegalArgumentException
 
 	{
 		BigInteger fact = BigInteger.ONE;
 		if (n < 0)
 		{
-			throw new IllegalArgumentException("No factorial for negative numbers.");
+			throw new IllegalArgumentException("Negative Number error.");
 		}
+		//for(int i = 0; i < n; i++)
 		for (int i = n; i > 1; i--)
 		{
 			fact = fact.multiply(BigInteger.valueOf(i));
@@ -31,6 +37,7 @@ public class Stats{
 	}
 
 	//In math n and k are the default arguments to the choose function
+	//how many way with n things can I choose k items
 	public static int choose(int n, int k)
 	{
 		BigInteger nCk = Stats.factorial(n);
@@ -38,6 +45,7 @@ public class Stats{
 		return nCk.intValue();
 	}
 
+	//Probability there are x successful events after n total events and probability of success in an event is p
 	public static double binDistPmf(int x,int n, double p) throws IllegalArgumentException
 	{
 		if (!(p <= 1 && p >= 0))
@@ -52,18 +60,18 @@ public class Stats{
 		{
 			throw new IllegalArgumentException("n must be greater than 0 and x must not be negative.");
 		}
-		int nCx = Stats.choose(n,x);
-		double pPowX = Math.pow(p,x);
-		double pPrimePowX = Math.pow(1-p,n-x);
+		int a = Stats.choose(n,x);
+		double b = Math.pow(p,x);
+		double c = Math.pow(1-p,n-x);
 		//System.out.println("nCx(30,6) = " + nCx + " .23^6 = " + pPowX + " pPrimePowX (1-p)^n-x = " + pPrimePowX);
-		return nCx * pPowX * pPrimePowX;
+		return a * b * c;
+
 	}
 
-	public static double binDistCdf(int x,int n, double p) throws IllegalArgumentException
-	{
+	//Prob there are 1,2,...,x successful events after n events where prob of success is p
+	public static double binDistCdf(int x,int n, double p) throws IllegalArgumentException{
 		double binDistCumulative = 0;
-		for (int i = 0; i <= x; i++)
-		{
+		for (int i = 0; i <= x; i++){
 			binDistCumulative += Stats.binDistPmf(i,n,p);
 		}
 		return binDistCumulative;
