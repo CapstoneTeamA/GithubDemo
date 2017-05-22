@@ -1,4 +1,5 @@
 import java.math.BigInteger;
+import java.lang.Math;
 import java.lang.IllegalArgumentException;
 public class Stats{
 	//some constats that may be used in the future
@@ -61,8 +62,8 @@ public class Stats{
 			throw new IllegalArgumentException("n must be greater than 0 and x must not be negative.");
 		}
 		int a = Stats.choose(n,x);
-		double b = Math.pow(p,x);
-		double c = Math.pow(1-p,n-x);
+		double b = java.lang.Math.pow(p,x);
+		double c = java.lang.Math.pow(1-p,n-x);
 		//System.out.println("nCx(30,6) = " + nCx + " .23^6 = " + pPowX + " pPrimePowX (1-p)^n-x = " + pPrimePowX);
 		return a * b * c;
 
