@@ -5,8 +5,11 @@ JC = javac
 
 CLASSES = \
 	Stats.java\
+	StrAndIntCat.java\
+	ContainsString.java\
 	PrintString.java\
-	Main.java
+	Main.java\
+	Math.java
 
 default: classes
 
