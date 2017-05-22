@@ -5,6 +5,7 @@ JC = javac
 
 CLASSES = \
 	PrintString.java\
+        StrCompare.java\
 	Main.java
 
 default: classes
