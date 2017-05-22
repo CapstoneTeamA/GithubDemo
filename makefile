@@ -4,6 +4,8 @@ JC = javac
 	$(JC) $*.java
 
 CLASSES = \
+	StrAndIntCat.java\
+	ContainsString.java\
 	PrintString.java\
 	Main.java\
 	Math.java
