@@ -41,7 +41,7 @@ public class Stats{
 	//how many way with n things can I choose k items
 	public static int choose(int n, int k)
 	{
-		BigInteger nCk = Stats.factorial(n);
+		BigInteger nCk = Stats.factorial(n)
 		nCk = nCk.divide(Stats.factorial(k).multiply(factorial(n-k)));
 		return nCk.intValue();
 	}
