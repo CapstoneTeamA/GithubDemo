@@ -7,6 +7,7 @@ CLASSES = \
 	StrAndIntCat.java\
 	ContainsString.java\
 	PrintString.java\
+        StrCompare.java\
 	Main.java\
 	Math.java
 
