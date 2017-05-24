@@ -23,7 +23,7 @@ public class Stats{
 	}
 
 	//In math n and k are the default arguments to the choose function
-	//how many way with n things can I choose k items
+	//how many ways with n things can I choose k items
 	public static int choose(int n, int k)
 	{
 		BigInteger nChooseK = Stats.factorial(n);

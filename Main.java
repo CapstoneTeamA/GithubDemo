@@ -3,7 +3,7 @@ public class Main{
     {
         System.out.println("running demo");
         testMathClass();
-	Stats.statsBattery();
+        Stats.statsBattery();
     }
 
 
