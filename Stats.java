@@ -3,33 +3,18 @@ import java.lang.Math;
 import java.lang.IllegalArgumentException;
 public class Stats{
 	//some constats that may be used in the future
-	private static final float pi = 3.14159f;
-	private static final float e = 2.71828f;
-	private static final float rt2 = 1.41421f;
-
-	public static final float getPi()
-	{
-		return Stats.pi;
-	}
-	public static final float getE()
-	{
-		return Stats.e;
-	}
-	public static final float getRt2()
-	{
-		return Stats.rt2;
-	}
+	public static final float PI = 3.14159f;
+	public static final float E = 2.71828f;
+	public static final float ROOT2 = 1.41421f;
 
 	//multiply n by n-1 by n-2 by ... by 2
 	public static BigInteger factorial(int n) throws IllegalArgumentException
-
 	{
 		BigInteger fact = BigInteger.ONE;
 		if (n < 0)
 		{
 			throw new IllegalArgumentException("Negative Number error.");
 		}
-		//for(int i = 0; i < n; i++)
 		for (int i = n; i > 1; i--)
 		{
 			fact = fact.multiply(BigInteger.valueOf(i));
@@ -41,43 +26,45 @@ public class Stats{
 	//how many way with n things can I choose k items
 	public static int choose(int n, int k)
 	{
-		BigInteger nCk = Stats.factorial(n)
-		nCk = nCk.divide(Stats.factorial(k).multiply(factorial(n-k)));
-		return nCk.intValue();
+		BigInteger nChooseK = Stats.factorial(n);
+		nChooseK = nChooseK.divide(Stats.factorial(k).multiply(factorial(n-k)));
+		return nChooseK.intValue();
 	}
 
 	//Probability there are x successful events after n total events and probability of success in an event is p
-	public static double binDistPmf(int x,int n, double p) throws IllegalArgumentException
+	public static double binDistPmf(int successes, int trials, double successProb) throws IllegalArgumentException
 	{
-		if (!(p <= 1 && p >= 0))
+		if (!(successProb <= 1 &&  successProb >= 0))
 		{
-			throw new IllegalArgumentException("Prob not in range (0,1)");
+			throw new IllegalArgumentException("successProb not in range (0,1)");
 		}
-		if (n < x)
+		if (trials < successes)
 		{	
-			throw new IllegalArgumentException("n cannot be less than x");
+			throw new IllegalArgumentException("trials cannot be less than successes");
 		}
-		if (n <=0 || x < 0)
+		if (trials <=0 || successes < 0)
 		{
-			throw new IllegalArgumentException("n must be greater than 0 and x must not be negative.");
+			throw new IllegalArgumentException("trials must be greater than 0 and successes must not be negative.");
 		}
-		int a = Stats.choose(n,x);
-		double b = java.lang.Math.pow(p,x);
-		double c = java.lang.Math.pow(1-p,n-x);
-		//System.out.println("nCx(30,6) = " + nCx + " .23^6 = " + pPowX + " pPrimePowX (1-p)^n-x = " + pPrimePowX);
-		return a * b * c;
 
+		int trialsChooseSuccesses = Stats.choose(trials,successes);
+		double probPowSuccesses = java.lang.Math.pow(successProb,successes);
+		double probPrimePowFailures = java.lang.Math.pow(1-successProb,trials-successes);
+		return trialsChooseSuccesses * probPowSuccesses * probPrimePowFailures;
 	}
 
 	//Prob there are 1,2,...,x successful events after n events where prob of success is p
-	public static double binDistCdf(int x,int n, double p) throws IllegalArgumentException{
+    	public static double binDistCdf(int successes, int trials, double successProb) throws IllegalArgumentException
+    	{
 		double binDistCumulative = 0;
-		for (int i = 0; i <= x; i++){
-			binDistCumulative += Stats.binDistPmf(i,n,p);
+		for (int i = 0; i <= successes; i++)
+		{
+			binDistCumulative += Stats.binDistPmf(i,trials,successProb);
 		}
 		return binDistCumulative;
-	}
-
+	} 
+	
+	//A battery of tests to show the methods are working correctly.
 	public static void statsBattery()
 	{
 		System.out.println("5! = " + Stats.factorial(5).intValue());
