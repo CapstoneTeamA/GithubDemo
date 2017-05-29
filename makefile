@@ -9,7 +9,8 @@ CLASSES = \
 	ContainsString.java\
 	PrintString.java\
 	Main.java\
-	Math.java
+	Math.java\
+	StrList.java
 
 default: classes
 
